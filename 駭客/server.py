@@ -11,10 +11,14 @@ while True:
     conn, addr = serverSocket.accept()
     print('connect from', addr)
 
-    #讀取1024byte
-    data = conn.recv(1024)
+    while True:
 
-    conn.send(data)
+        #讀取1024byte
+        data = conn.recv(2048)
+        if not data:
+            break
+        print(data)
+    #conn.send(data)
 
     conn.close()
 
