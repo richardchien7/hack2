@@ -1,4 +1,5 @@
 import socket
+from my_protocol import int_to_nbyte, nbyte_to_int
 print("helloworld")
 serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -9,16 +10,19 @@ serverSocket.bind((socket.gethostname(), 1234, ))
 serverSocket.listen(5)
 while True:
     conn, addr = serverSocket.accept()
-    print('connect from', addr)
 
-    while True:
+    data, _ = nbyte_to_int(conn)
+    print("receive", data, "from", addr)
+    #print('connect from', addr)
 
-        #讀取1024byte
-        data = conn.recv(2048)
-        if not data:
-            break
-        print(data)
-    #conn.send(data)
+    # while True:
+    #
+    #     #讀取1024byte
+    #     data = conn.recv(2048)
+    #     if not data:
+    #         break
+    #     print(data)
+    # #conn.send(data)
 
     conn.close()
 
