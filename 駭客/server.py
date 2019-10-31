@@ -14,7 +14,7 @@ while True:
     data, _ = nbyte_to_int(conn)
     print("receive", data, "from", addr)
     #print('connect from', addr)
-
+#
     # while True:
     #
     #     #讀取1024byte
