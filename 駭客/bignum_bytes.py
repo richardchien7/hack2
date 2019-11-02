@@ -2,10 +2,14 @@ def bignum_to_bytes(n):
     result = b''
     while n > 0:
         b = n % 128
+        
         n >>= 7
+        print("N:",n)
         if n:
             b+=128
+        print("B:",b)
         result += bytes([b])
+        print("result:", result)
     return result
 
 def bytes_to_bignum(bs):
